@@ -1,0 +1,287 @@
+
+body {
+  background-color: #385b17;
+  color: #50b91c;
+}
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+}
+p {
+  background-color: black;
+  color: blue;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: justify;
+}   
+
+p.margin
+{
+	margin-top:100px;
+	margin-bottom:100px;
+	margin-right:50px;
+	margin-left:50px;
+}
+
+p.padding
+{
+	padding-top:25px;
+	padding-bottom:25px;
+	padding-right:50px;
+	padding-left:50px;
+}
+.marked p
+{
+    color:white;
+}
+p.marked{
+    text-decoration:underline;
+}
+
+p.pos_fixed
+{
+	position:fixed;
+	top:900px;
+	right:5px;
+}
+
+p.pos_relative
+{
+	position:relative;
+	top:10px;
+	left:10px;
+}
+
+p.pos_absolute
+{
+	position:absolute;
+	top:100px;
+	right:10px;
+}
+
+/*
+后代选择器
+后代选择器用于选取某元素的后代元素。
+*/
+div p
+{
+	background-color:yellow;
+}
+
+/*
+相邻兄弟选择器
+相邻兄弟选择器（Adjacent sibling selector）可选择紧接在另一元素后的元素，且二者有相同父元素。
+如果需要选择紧接在另一个元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）。
+div+p
+{
+  background-color:yellow;
+}
+
+后续兄弟选择器
+后续兄弟选择器选取所有指定元素之后的相邻兄弟元素。
+div~p
+{
+  background-color:yellow;
+}
+
+子元素选择器
+与后代选择器相比，子元素选择器（Child selectors）只能选择作为某元素直接/一级子元素的元素。
+div>p
+{
+  background-color:yellow;
+}
+
+*/
+
+div.box {
+    background-color: lightgrey;
+    width: 300px;
+    border: 25px solid green;
+    padding: 25px;
+    margin: 25px;
+}
+
+div.static {
+    position: static;
+    border: 3px solid #73AD21;
+}
+
+div.relative {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    border: 3px solid #73AD21;
+}
+
+div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    border: 3px solid #73AD21;
+}
+
+div.fixed {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    border: 3px solid #73AD21;
+}
+
+
+
+.center {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+.block {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+
+
+#para1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.indent{
+  text-indent: 50px;
+}
+ /* 伪类 */
+a:link,a:visited  /* 未访问的链接 *//* 已访问的链接 */
+{
+	display:block;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#98bf21;
+	width:120px;
+	text-align:center;
+	padding:10px;
+	text-decoration:none;
+}
+a:hover,a:active   /* 鼠标划过链接 *//* 已选中的链接 */
+{
+	background-color:#7A991A;
+}
+
+ul.a {list-style-type:circle;}
+ul.b {list-style-type:square;}
+ol.c {list-style-type:upper-roman;}
+ol.d {list-style-type:lower-alpha;}
+
+#customers
+{
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	width:100%;
+	border-collapse:collapse;
+}
+#customers td, #customers th 
+{
+	font-size:1em;
+	border:1px solid #98bf21;
+	padding:3px 7px 2px 7px;
+}
+#customers th 
+{
+	font-size:1.1em;
+	text-align:left;
+	padding-top:5px;
+	padding-bottom:4px;
+	background-color:#A7C942;
+	color:#ffffff;
+}
+#customers tr.alt td 
+{
+	color:#000000;
+	background-color:#EAF2D3;
+}
+
+.thumbnail 
+{
+	float:left;
+	width:110px;
+	height:90px;
+	margin:5px;
+}
+
+.text_line
+{
+	clear:both;
+	margin-bottom:2px;
+}
+
+span
+{
+	float:left;
+	width:1.2em;
+	font-size:400%;
+	font-family:algerian,courier;
+	line-height:80%;
+}
+
+/*会使所有 class 为 article 的段落的首字母变为红色。*/
+p.article:first-letter {color:#ff0000;}
+
+h1.P003:before
+{
+  content:url(https://www.w3school.com.cn/i/eg_tulip.jpg);
+}
+
+ul
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+/* 鼠标移动到选项上修改背景颜色 */
+li a:hover {
+    background-color: #555;
+    color: white;
+} 
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
