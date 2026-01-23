@@ -1,248 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>flex布局</title>
+    <link rel = "stylesheet" href = "indexx.css">
+    <style>
+        body{
+            margin: 0;
+            height: 1000vh;
+            background-color: #eee;
 
-<style>
-    ul
-{
-	list-style-type:none;
-	margin:0;
-	padding:0;
-}
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
+        }
+        *{
+            border: 1px solid #96c5df;
+        }
+        .flex{
+            display: flex;
+        }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+        .white{
+            background-color: #fff;
+        }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
+        .flex1{
+            flex: 1;
+        }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+        .header{
+            height: 50px;
+            background-color: rgb(176, 232, 35);
+        }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
+        .main{
+            height: 300px;
+            background-color: #0f0;
+        }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+        .footer{
+            height: 50px;
+            background-color: rgb(92, 92, 223);
+        }
 
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
+        .center{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-</style>
+        .column{
+            flex-direction: column;
+        }
 
+        .row{
+            flex-direction: row;
+        }
+
+        ul{
+            list-style: none;    
+            padding: 0;
+            margin: 0;
+        }
+
+        li{
+            padding: 10px;
+            margin: 5px;
+            background-color: #f00;
+            color: #fff;
+            cursor: pointer;
+        }
+
+
+
+        h2{
+            margin: 0;
+            padding: 5px;
+            background-color: #367bd5;
+            color: #fff;
+        }
+
+
+
+
+    </style>
 </head>
-
-<body style="background-color: rgb(24, 216, 140);">
-
-    <div style="
-    width: 1000px;
-    height: 2400px;
-    background-color: rgb(26, 73, 201);
-    color: olivedrab;">
-
-        <h1>大大的标题</h1>
-
-        <hr>
-        <div class="dropdown">
-        <button class="dropbtn"><a href="#">主页</a></button>
-        <div class="dropdown-content">
-            <a href="cssin.html" target="_blank">第二页面</a>
-            <a href="https://www.bilibili.com/" target="_blank">bilibili</a>
-            <a href="https://github.com/" target="_blank">github</a>
+<body class="flex">
+    <!-- 侧边栏 -->
+    <div class="white" style = "width: 200px;">
+        <!--头像-->
+        <div class="heater center">
+            <div class="center">
+                <img src="/img/003.jpg" alt="头像" width="50px" height="50px">
+            </div> 
+            <div>   
+                <h2>28</h2>
+            </div>   
+            
         </div>
+        <!--菜单-->
+        <div class="column ">
+            <h2 class="center">目录</h2>    
+
+            <ul>
+                <li class="center">
+                <div class="dropdown dropbtn">
+                <a href="#home">主页</a>
+                <div class="dropdown-content">
+                    <a href="#" class="center">首页</a>
+                    <a href="#" class="center">登录</a>
+                    <a href="#" class="center">注册</a>
+                </div>
+                </div>
+                </li>
+
+               
+                <li class="center"><a href="#" class="center">新闻</a></li>
+                <li class="center"><a href="#" class="center">产品</a></li>
+                <li class="center"><a href="#" class="center">关于</a></li>
+                <li class="center"><a href="#" class="center">联系</a></li>
+                <li class="center"><a href="#bottom" class="center">底部</a></li>
+                <li class="center"><a href="#" class="center">友情链接</a></li>
+                <li class="center"><a href="#" class="center">留言板</a></li>
+                <li class="center"><a href="#" class="center">搜索</a></li>
+             
+
+                <li class="center">
+                <div class="dropdown dropbtn">
+                <a href="#home">测试</a>
+                <div class="dropdown-content">
+                    <a href="cssin.html" class="center" target="_blank">测试1</a>
+                    <a href="#" class="center">测试2</a>
+                    <a href="#" class="center">测试3</a>
+                </div>
+                </div>
+                </li>
+
+            </ul>
         </div>
-        <p style="color: white;">你是</p>
-
-        <a href="#enter" style="color: #cf1515;">前往表单</a><br><br>
-
-        <abbr title="Chinese">语言</abbr>
-        <!-- 这是一个注释 -->
-        <p class="text highlight">This is a highlighted text.</p>
-        <!-- 这是一个一个 -->
-
-        <h2>HTML</h2>
-        <p>HTML 是用于描述 web 页面的一种语言。</p>
-
-        <hr>
-
-        <h2>CSS</h2>
-        <p>CSS 定义如何显示 HTML 元素。</p>
-
-        <hr>
-
-        <p>这个<br>段落<br>演  示 了  分 行  的 效 果</p>
-        <!-- 多个空格也被视为1个 -->
-
-        <hr>
-
-        <b>这个文本是加粗的</b>
-
-        <br />
-
-        <strong>这个文本是加粗的</strong>
-
-        <br />
-
-        <big>这个文本字体放大</big>
-
-        <br />
-
-        <em>这个文本是斜体的</em>
-
-        <br />
-
-        <i>这个文本是斜体的</i>
-
-        <br />
-
-        <small>这个文本是缩小的</small>
-
-        <br />
-
-        这个文本包含
-        <sub>下标</sub>
-
-        <br />
-
-        这个文本包含
-        <sup>上标</sup>
-
-        <hr>
-
-        <a href="/sonefir.html">本文本</a> 是一个指向本网站中的一个页面的链接。</p>
-
-        <p><a href="https://www.bilibili.com/" target="_blank">本文本</a> 是一个指向万维网上的页面的链接。</p>
-
-        <hr>
-
-        <!-- 链接到页面中的某个部分 -->
-        <a href="#section1">跳转到第1部分</a>
-        <div id="section1">这是第1部分</div>
-
-        <hr>
-
-        <a href="document.pdf" download>下载文档</a>
-
-        <a href="https://www.runoob.com/" target="_blank" rel="noopener noreferrer"><br>访问菜鸟教程!</a>
-
-        <hr>
-
-        <a id="tips">有用的提示部分</a>
-        <a href="https://www.runoob.com/html/html-links.html#tips" target="_blank">访问有用的提示部分</a>
-
-        <!-- 导航到页面顶部 -->
-        <hr>
-        <a href="#">导航到页面顶部</a>
-        <hr>
-
-        <a href="">刷新</a>
-        <hr>
-
-        <a role="button">这是一个按钮</a>
-        <hr>
-
-        <img src="003.jpg" alt="Smiley face" width="420" height="420">
-
-
-
-
-        <h4>一列:</h4>
-        <table border="1">
-        <tr>
-            <td>100</td>
-        </tr>
-        </table>
-        
-        <h4>一行三列:</h4>
-        <table border="1">
-        <tr>
-            <td>100</td>
-            <td>200</td>
-            <td>300</td>
-        </tr>
-        </table>
-        
-        <h4>两行三列:</h4>
-        <table border="1">
-        <tr>
-            <td>100</td>
-            <td>200</td>
-            <td>300</td>
-        </tr>
-        <tr>
-            <td>400</td>
-            <td>500</td>
-            <td>600</td>
-        </tr>
-        </table>
-
-
-
 
 
     </div>
-    <div id="container" style="width:500px">
+    <!-- 主体内容 -->
+    <div class="flex1" style = "width: 800px;">
+        <!-- 头部 -->
+        <header class="header">
+            头部
+        </header>
+        <!-- 内容 -->
+        <main class="main">
+            内容1
+        </main>
+        <main class="main">
+            内容2
+        </main>
+        <main class="main">
+            内容3
+        </main>
+        <main class="main"> 
+            内容4
+        </main>
 
-    <div id="header" style="background-color:#cf1515;">
-    <h1 style="margin-bottom:0;">主要的网页标题</h1></div>
-
-    <div id="menu" style="background-color:#FFD700;height:300px;width:100px;float:left;">
-    <b>菜单</b><br><hr>
-    HTML<br><hr>
-    CSS<br><hr>
-    JavaScript</div>
-
-    <div id="content" style="background-color:#EEEEEE;height:300px;width:400px;float:left;">
-    内容在这里</div>
-
-    <div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
-    www.com</div>
-
-    </div>
-
-    <a href="#menu">跳转到菜单</a>
-
-    <div style="color: #0a0a09; width: 1000px; height: 1000px; background-color: aqua;">
-        
-        <p id="enter">表单</p><hr>
-        <form>
-            用户名 : <input type="text" name="user"><br><hr>
-            密码 : <input type="password" name="pwd"><hr>
-        </form>
-
-
-        
-
+        <!-- 底部 -->
+        <footer class="footer" id="bottom">
+            底部
+        </footer>   
 
     </div>
-
-
-
-
-</body>
-
 </html>
