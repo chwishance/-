@@ -1,0 +1,68 @@
+a:link, a:visited {
+    display: block;
+    font-weight: lighter;
+    color: #FFFFFF;
+    background-color: #98bf21;
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    background-color: #7A991A;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    width: 100%; /* 确保按钮宽度占满父容器 */
+    box-sizing: border-box; /* 确保内边距和边框计入宽度 */
+}
+
+.dropdown {
+    position: relative; /* 使下拉菜单相对于父元素定位 */
+    display: flex;
+    width: 100%; /* 确保下拉菜单宽度占满父容器 */
+    box-sizing: border-box; /* 确保内边距和边框计入宽度 */
+}
+
+.dropdown-content {
+    display: none; /* 默认隐藏下拉内容 */
+    flex-direction: column; /* 垂直排列 */
+    position: absolute; /* 使用绝对定位 */
+    background-color: #f9f9f9; /* 示例背景颜色 */
+    min-width: 200px; /* 确保下拉内容宽度与侧边栏一致 */
+    width: 100%; /* 确保下拉内容宽度占满父容器 */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* 示例阴影效果 */
+    z-index: 1; /* 确保下拉内容在其他元素之上 */
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex; /* 鼠标悬停时显示下拉内容 */
+}
+
+.dropdown-content a {
+    color: black; /* 示例文本颜色 */
+    padding: 12px 16px; /* 示例内边距 */
+    text-decoration: none; /* 去掉下划线 */
+    display: flex; /* 确保链接文本占满下拉内容宽度 */
+    width: 100%; /* 确保链接宽度占满下拉内容 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1; /* 示例鼠标悬停时的背景颜色 */
+}
+
+/* 确保侧边栏的宽度为200px */
+.white {
+    width: 200px;
+    background-color: #fff;
+    border: 1px solid #96c5df; /* 添加边框以便观察 */
+    box-sizing: border-box; /* 确保内边距和边框计入宽度 */
+}
