@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practice</title>
+    <script src="/js/script.js">
+
+    </script>
+</head>
+<body>
+
+    <h1>JavaScript 练习</h1>
+    <p>
+    JavaScript 可以对事件作出反应。比如对按钮的点击：
+    </p>
+    <button type="button" onclick="alert('欢迎!')">点我!</button>
+    <p>
+    JavaScript 能够直接写入 HTML 输出流中：
+    </p>
+    <p id="demo">
+    JavaScript 能改变 HTML 元素的内容。
+    </p>
+    <script>
+    function myFunction()
+    {
+        x=document.getElementById("demo");  // 找到元素
+        x.innerHTML="Hello JavaScript!";    // 改变内容
+    }
+    </script>
+    <button type="button" onclick="myFunction()">点击这里</button>
+        
+    <script>
+    function changeImage()
+    {
+        element=document.getElementById('myimage')
+        if (element.src.match("/img/pic_bulbon.gif"))
+        {
+            element.src="/img/pic_bulboff.gif";
+        }
+        else
+        {
+            element.src="/img/pic_bulbon.gif";
+        }
+    }
+    </script>
+    <img id="myimage" onclick="changeImage()" src="/img/pic_bulboff.gif" width="100" height="180">
+    <p>点击灯泡就可以打开或关闭这盏灯</p>
+
+
+    <div>
+        <p id="demos">这是x</p>
+        
+    <script>
+        var x = 10;//使用var关键字声明变量,作用域为全局
+        document.getElementById("demos").innerHTML = "x = " + x;
+    </script>
+
+    </div>
+
+
+    <div>
+        <p id="demos2">这是y</p>
+    <script>
+        let y = 20;//使用let关键字声明变量,作用域为当前代码块
+        document.getElementById("demos2").innerHTML = "y = " + y;
+    </script>
+    </div>
+
+    <div>
+        <p id="personLastName">姓氏</p>          
+    </div>
+
+
+    <script>
+        var person={
+            firstname : "John",
+            lastname  : "Doe",
+            id        :  5566
+        };
+        document.getElementById("personLastName").innerHTML = person.lastname;
+    </script>
+
+    <p>
+    如果你的变量没有声明，它将自动成为全局变量：
+    </p>
+    <p id="demo3"></p>
+    <script>
+    myFunction();
+    document.getElementById("demo3").innerHTML =
+        "我可以显示 " + carName;
+    function myFunction() 
+    {
+        carName = "Volvo";
+    }
+    </script>
+
+    <h2>JavaScript 模板字面量</h2>
+
+    <p>模板字面量使用反引号 (``) 来定义一个字符串:</p>
+    <p>模板字符串是一种方便的字符串语法，允许你在字符串中嵌入表达式和变量。</p>
+    <p id="demo4"></p>
+    <script>
+    let text = `Hello RUNOOB!`;
+    document.getElementById("demo4").innerHTML = text;
+    </script>
+
+
+    <p id="demo4"></p>
+
+    <script>
+    var name = 'Runoob';
+    var age = 30;
+    const message = `My name is ${name} and I'm ${age} years old.`;
+    document.getElementById("demo4").innerHTML = message;
+    </script>
+
+
+    <h2>点击按钮创建及增加字符串变量。</h2>
+    <button onclick="myFunction1()">点击这里</button>
+    <p id="demo5"></p>
+    <script>
+    function myFunction1()
+    {
+        txt1="What a very";
+        txt2="nice day";
+        txt3=txt1+" "+txt2;
+        document.getElementById("demo5").innerHTML=txt3;
+    }
+    </script>
+
+    <p>点击按钮创建及增加字符串变量。</p>
+    <button onclick="myFunction2()">点击这里</button>
+    <p id="demo6"></p>
+    <script>
+    function myFunction2()
+    {
+        var x=5+5;
+        var y="5"+5;
+        var z="Hello"+5;
+        var demoP=document.getElementById("demo6");
+        demoP.innerHTML=x + "<br>" + y + "<br>" + z;
+    }
+    </script>
+
+
+    <p> typeof 操作符返回变量或表达式的类型。</p>
+    <p id="demo7"></p>
+    <script>
+    document.getElementById("demo7").innerHTML = 
+        typeof "john" + "<br>" + 
+        typeof 3.14 + "<br>" +
+        typeof false + "<br>" +
+        typeof [1,2,3,4] + "<br>" +
+        typeof {name:'john', age:34} + "<br>" +
+        Array.isArray([1,2,3]);
+
+    </script>
+
+
+    <p>声明提升</p>
+    <p id="demo8"></p>
+    <script>
+        x1 = 10;
+        document.getElementById("demo8").innerHTML = x1;
+        var x1;
+        
+    </script>
+
+
+    <h1>JavaScript 验证输入</h1>
+
+    <p>请输入 1 到 10 之间的数字：</p>
+
+    <input id="numb">
+
+    <button type="button" onclick="myFunction6()">提交</button>
+
+    <p id="demo9"></p>
+
+    <script>
+    function myFunction6() {
+        var x, texts;
+
+        // 获取 id="numb" 的值
+        x = document.getElementById("numb").value;
+
+        // 如果输入的值 x 不是数字或者小于 1 或者大于 10，则提示错误
+        if (isNaN(x) || x < 1 || x > 10) {
+            texts = "输入错误";
+        } else {
+            texts = "输入正确";
+        }
+        document.getElementById("demo9").innerHTML = texts;
+    }
+    </script>
+
+
+
+    <a href="javascript:void(0)">单击此处什么也不会发生</a>
+
+    <p>点击以下链接查看结果：</p>
+    <a href="javascript:void(alert('Warning!!!'))">点我!</a>
+
+
+    <p>回调函数等待 3 秒后执行。</p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <script>
+    setTimeout(function () {
+        document.getElementById("demo10").innerHTML="RUNOOB-1!";  // 三秒后子线程执行
+    }, 3000);
+    document.getElementById("demo11").innerHTML="RUNOOB-2!";      // 主线程先执行
+    </script>
+
+    
+
+
+        <p>请输入满足的数字：</p>
+
+    <input id="numbs">
+
+    <button type="button" onclick="myFunction6()">提交</button>
+
+    <p>结果为：<p id="demo12"></p>这里是结果。</p>
+
+    <script>
+    function myFunction6() {
+        var x, texts;
+
+        // 获取 id="numbs" 的值
+        x = document.getElementById("numbs").value;
+
+        // 如果输入的值 x 不是数字95276,则提示错误
+        if (isNaN(x) || x != '95276' ) {
+            texts = "<a href='index.html'>输入错误</a>";
+        } else {
+            texts = "<a href='docs/PVZ-Rouge-v1.5.0.zip'>游戏下载</a>";
+        }
+        document.getElementById("demo12").innerHTML = texts;
+    }
+    </script>
+</body>
+</html>
