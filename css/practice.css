@@ -1,0 +1,308 @@
+/* ===== css/practice.css ===== */
+
+.practice-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 22px;
+    max-width: 1560px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 26px 24px 44px;
+    align-items: start;
+}
+
+/* ===== 左侧设置栏 ===== */
+.practice-sidebar {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-left: 5px solid var(--color-secondary);
+    border-radius: 14px;
+    padding: 20px 18px;
+    box-shadow: 0 3px 16px var(--color-shadow);
+    position: sticky;
+    top: 88px;
+    height: fit-content;
+}
+
+.setting-group {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.setting-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 8px;
+}
+
+.setting-group h3 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: 3px solid var(--color-secondary);
+    line-height: 1.3;
+}
+
+.setting-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    font-size: 14px;
+    color: var(--color-text);
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    user-select: none;
+}
+
+.setting-group label:hover {
+    background: var(--color-surface-2);
+}
+
+.setting-group input[type="radio"],
+.setting-group input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.group-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.group-filter::-webkit-scrollbar {
+    width: 6px;
+}
+
+.group-filter::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 3px;
+}
+
+.muted {
+    font-size: 13px;
+    color: var(--color-text-light);
+    padding: 4px 10px;
+    font-style: italic;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+}
+
+/* ===== 主舞台 ===== */
+.practice-stage {
+    min-width: 0;
+}
+
+.practice-empty {
+    background: var(--color-surface);
+    border: 1.5px dashed var(--color-border);
+    border-radius: 14px;
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+.practice-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.practice-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px var(--color-shadow);
+}
+
+.practice-progress {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+}
+
+.practice-group-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #FFF8F0;
+    background: var(--color-secondary);
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(120, 146, 98, 0.35);
+}
+
+.practice-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+}
+
+.practice-body .panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface-2);
+    border: 1.5px solid var(--color-border);
+    border-radius: 11px;
+    padding: 12px;
+    min-width: 0;
+}
+
+.practice-body .panel-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: 3px solid var(--color-secondary);
+    line-height: 1.2;
+}
+
+.practice-body .canvas-host {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #FCFAF5;
+    border: 1px solid rgba(221, 210, 190, 0.7);
+    cursor: grab;
+}
+
+.practice-body .canvas-host:active {
+    cursor: grabbing;
+}
+
+.practice-body .canvas-host canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.practice-body .svg-host {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    background: #FCFAF5;
+    border: 1px solid rgba(221, 210, 190, 0.7);
+    overflow: hidden;
+}
+
+.practice-body .unfold-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ===== 公式面板 ===== */
+.practice-body .panel-formula {
+    background: linear-gradient(180deg, #FFFDF8 0%, #FAF5EA 100%);
+}
+
+.practice-formula {
+    flex: 1;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    text-align: center;
+}
+
+.formula-display {
+    font-family: "Courier New", "Consolas", "Menlo", monospace;
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    line-height: 1.55;
+    color: var(--formula-gold);
+    word-break: break-all;
+}
+
+.formula-hidden {
+    font-size: 15px;
+    color: var(--color-text-light);
+    letter-spacing: 1.5px;
+    font-style: italic;
+    opacity: 0.75;
+}
+
+/* ===== 底部按钮 ===== */
+.practice-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding-top: 4px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 1180px) {
+    .practice-container {
+        grid-template-columns: 1fr;
+    }
+    .practice-sidebar {
+        position: static;
+    }
+    .practice-body {
+        grid-template-columns: 1fr 1fr;
+    }
+    .practice-body .panel-formula {
+        grid-column: 1 / -1;
+    }
+    .practice-body .canvas-host,
+    .practice-body .svg-host {
+        height: 260px;
+    }
+    .practice-formula {
+        min-height: 160px;
+    }
+}
+
+@media (max-width: 700px) {
+    .practice-container {
+        padding: 16px 12px 30px;
+    }
+    .practice-body {
+        grid-template-columns: 1fr;
+    }
+    .formula-display {
+        font-size: 26px;
+        letter-spacing: 3px;
+    }
+    .practice-actions {
+        justify-content: stretch;
+    }
+    .practice-actions .btn {
+        flex: 1;
+    }
+}

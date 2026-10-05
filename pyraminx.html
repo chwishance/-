@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金字塔公式集 · 魔方公式记忆</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pyraminx.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title-wrap">
+            <a href="index.html" class="home-link" title="返回主页">←</a>
+            <h1>金字塔 · 公式集</h1>
+        </div>
+        <div class="header-actions">
+            <a href="practice.html?cube=pyraminx" class="btn btn-outline">公式训练</a>
+            <button id="btn-add-top" class="btn btn-primary">+ 新建金字塔</button>
+            <button id="btn-export" class="btn btn-outline">导出公式集</button>
+            <label for="file-import" class="btn btn-outline">导入公式集</label>
+            <input type="file" id="file-import" accept=".json" hidden>
+        </div>
+    </header>
+
+    <main id="app" class="app-container"></main>
+
+    <div class="bottom-create">
+        <button id="btn-add-bottom" class="btn btn-create">+ 创建金字塔</button>
+    </div>
+
+    <footer class="app-footer">
+        <p>中国传统色 · 点击色块涂色 · 拖拽旋转 3D 模型 · 右侧可为公式分类</p>
+    </footer>
+
+    <script type="module" src="js/pyraminx.js"></script>
+</body>
+</html>

@@ -1,0 +1,252 @@
+/* ===== css/pyraminx.css ===== */
+/* 金字塔模块样式 */
+
+.pyraminx-module {
+    background: var(--color-surface);
+    border: 1.5px solid var(--color-border);
+    border-left: 5px solid var(--color-accent);
+    border-radius: 14px;
+    padding: 18px 20px 22px;
+    margin-bottom: 26px;
+    box-shadow: 0 3px 16px var(--color-shadow);
+    transition: box-shadow 0.25s ease;
+    animation: moduleIn 0.3s ease;
+}
+
+.pyraminx-module:hover {
+    box-shadow: 0 6px 24px rgba(80, 60, 40, 0.13);
+}
+
+@keyframes moduleIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== 模块头部 ===== */
+.module-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--color-border);
+}
+
+.module-title {
+    flex: 1 1 160px;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text);
+    background: transparent;
+    border: 1.5px solid transparent;
+    border-radius: 7px;
+    padding: 6px 12px;
+    outline: none;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    min-width: 0;
+}
+
+.module-title:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface-2);
+}
+
+.module-title:focus {
+    border-color: var(--color-primary);
+    background: #FFFFFF;
+}
+
+/* 分组输入框 */
+.module-group {
+    flex: 1 1 160px;
+    font-family: inherit;
+    font-size: 13.5px;
+    color: var(--color-text);
+    background: var(--color-surface-2);
+    border: 1.5px solid var(--color-border);
+    border-radius: 7px;
+    padding: 7px 12px;
+    outline: none;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+    min-width: 0;
+}
+
+.module-group::placeholder {
+    color: rgba(122, 113, 104, 0.6);
+    font-size: 12.5px;
+    letter-spacing: 0.5px;
+}
+
+.module-group:hover {
+    border-color: var(--color-secondary);
+}
+
+.module-group:focus {
+    border-color: var(--color-primary);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(196, 60, 52, 0.08);
+}
+
+.module-header [data-action="delete"] {
+    margin-left: auto;
+}
+
+/* ===== 模块主体三栏布局 ===== */
+.module-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    align-items: stretch;
+}
+
+/* ===== 通用面板 ===== */
+.panel {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface-2);
+    border: 1.5px solid var(--color-border);
+    border-radius: 11px;
+    padding: 12px;
+    min-width: 0;
+}
+
+.panel-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--color-secondary);
+    margin-bottom: 10px;
+    padding-left: 8px;
+    border-left: 3px solid var(--color-secondary);
+    line-height: 1.2;
+}
+
+/* ===== 3D 模型区 ===== */
+.canvas-host {
+    width: 100%;
+    height: 268px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #FCFAF5;
+    border: 1px solid rgba(221, 210, 190, 0.7);
+    cursor: grab;
+}
+
+.canvas-host:active {
+    cursor: grabbing;
+}
+
+.canvas-host canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ===== 展开图区 ===== */
+.svg-host {
+    position: relative;
+    width: 100%;
+    height: 268px;
+    border-radius: 8px;
+    background: #FCFAF5;
+    border: 1px solid rgba(221, 210, 190, 0.7);
+    overflow: hidden;
+}
+
+.unfold-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.unfold-svg polygon {
+    transition: filter 0.12s ease, opacity 0.12s ease;
+    cursor: pointer;
+}
+
+.unfold-svg polygon:hover {
+    filter: brightness(1.12) drop-shadow(0 0 4px rgba(0, 0, 0, 0.25));
+}
+
+/* ===== 公式栏 ===== */
+.panel-formula {
+    background: linear-gradient(180deg, #FFFDF8 0%, #FAF5EA 100%);
+}
+
+.formula-textarea {
+    width: 100%;
+    flex: 1;
+    min-height: 268px;
+    font-family: "Courier New", "Consolas", "Menlo", monospace;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.55;
+    letter-spacing: 3px;
+    color: var(--formula-gold);
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px 10px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s ease;
+    word-break: break-all;
+}
+
+.formula-textarea::placeholder {
+    color: rgba(184, 134, 11, 0.3);
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.formula-textarea:focus {
+    border-color: var(--color-accent);
+    background: #FFFFFF;
+    box-shadow: inset 0 0 0 1px rgba(212, 160, 23, 0.15);
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 1180px) {
+    .module-body {
+        grid-template-columns: 1fr 1fr;
+    }
+    .panel-formula {
+        grid-column: 1 / -1;
+    }
+    .formula-textarea {
+        min-height: 160px;
+    }
+}
+
+@media (max-width: 780px) {
+    .module-body {
+        grid-template-columns: 1fr;
+    }
+    .canvas-host,
+    .svg-host {
+        height: 240px;
+    }
+    .formula-textarea {
+        font-size: 24px;
+    }
+    .pyraminx-module {
+        padding: 14px;
+        border-left-width: 4px;
+    }
+    .module-title {
+        font-size: 15px;
+        min-width: 120px;
+    }
+}

@@ -1,0 +1,279 @@
+/* ===== css/main.css ===== */
+/* 全局样式 —— 中国传统色配色 */
+
+:root {
+    /* 主色系 —— 取自中国传统色 */
+    --color-bg: #F2ECDE;          /* 素 */
+    --color-surface: #FCFAF5;     /* 宣纸白 */
+    --color-surface-2: #F7F1E5;   /* 米白 */
+    --color-primary: #C43C34;     /* 朱砂 */
+    --color-primary-hover: #A8322A;
+    --color-secondary: #789262;   /* 竹青 */
+    --color-accent: #D4A017;      /* 赤金 */
+    --color-text: #2F2A26;        /* 墨色 */
+    --color-text-light: #7A7168;  /* 灰褐 */
+    --color-border: #DDD2BE;      /* 浅牙色 */
+    --color-shadow: rgba(80, 60, 40, 0.08);
+    --formula-gold: #B8860B;      /* 暗金 */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB",
+                 "Noto Sans SC", system-ui, -apple-system, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ===== 顶部栏 ===== */
+.app-header {
+    background: var(--color-surface);
+    border-bottom: 2px solid var(--color-border);
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px var(--color-shadow);
+}
+
+.app-header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-primary);
+    position: relative;
+    padding-left: 14px;
+}
+
+.app-header h1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 24px;
+    background: var(--color-accent);
+    border-radius: 3px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #FFF8F0;
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(196, 60, 52, 0.25);
+}
+
+.btn-primary:hover {
+    background: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(196, 60, 52, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-border);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+    background: rgba(120, 146, 98, 0.08);
+}
+
+.btn-danger {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: rgba(196, 60, 52, 0.35);
+    font-size: 13px;
+    padding: 6px 14px;
+}
+
+.btn-danger:hover {
+    background: var(--color-primary);
+    color: #FFF8F0;
+    border-color: var(--color-primary);
+}
+
+.btn-sm {
+    padding: 5px 12px;
+    font-size: 12.5px;
+}
+
+.btn-create {
+    background: linear-gradient(135deg, var(--color-primary), #D9544C);
+    color: #FFF8F0;
+    font-size: 17px;
+    letter-spacing: 3px;
+    padding: 15px 60px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 6px 20px rgba(196, 60, 52, 0.3);
+    transition: all 0.25s ease;
+}
+
+.btn-create:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 28px rgba(196, 60, 52, 0.4);
+}
+
+.btn-create:active {
+    transform: translateY(0) scale(0.99);
+}
+
+/* ===== 主容器 ===== */
+.app-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 28px 24px 12px;
+}
+
+/* ===== 底部创建按钮 ===== */
+.bottom-create {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0 44px;
+}
+
+/* ===== 页脚 ===== */
+.app-footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 13px;
+    color: var(--color-text-light);
+    letter-spacing: 1px;
+    border-top: 1px solid var(--color-border);
+    background: rgba(252, 250, 245, 0.6);
+}
+
+/* ===== 悬浮调色板 ===== */
+.color-palette {
+    position: fixed;
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    padding: 11px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(60, 45, 30, 0.22);
+    border: 1.5px solid var(--color-border);
+    transform: translate(-50%, -115%);
+    animation: paletteIn 0.15s ease;
+}
+
+@keyframes paletteIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -100%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -115%) scale(1);
+    }
+}
+
+.color-swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    transition: transform 0.14s ease, border-color 0.14s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.16);
+    border-color: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+    .app-header {
+        padding: 14px 16px;
+    }
+    .app-header h1 {
+        font-size: 18px;
+    }
+    .app-container {
+        padding: 18px 12px 8px;
+    }
+    .btn-create {
+        font-size: 15px;
+        padding: 13px 40px;
+    }
+}
+
+/* ===== 顶部标题栏（带返回箭头） ===== */
+.header-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.home-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    line-height: 1;
+    color: var(--color-text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.home-link:hover {
+    color: var(--color-primary);
+    background: rgba(196, 60, 52, 0.08);
+    transform: translateX(-2px);
+}

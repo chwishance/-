@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金字塔 · 公式训练</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/pyraminx.css">
+    <link rel="stylesheet" href="css/practice.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-title-wrap">
+            <a href="index.html" class="home-link" title="返回主页">←</a>
+            <h1>金字塔 · 公式训练</h1>
+        </div>
+        <div class="header-actions">
+            <a href="pyraminx.html" class="btn btn-outline">返回公式集</a>
+        </div>
+    </header>
+
+    <main class="practice-container">
+
+        <!-- ===== 左侧设置栏 ===== -->
+        <aside class="practice-sidebar">
+            <section class="setting-group">
+                <h3>抽取方式</h3>
+                <label><input type="radio" name="drawMode" value="random" checked> 随机抽取</label>
+                <label><input type="radio" name="drawMode" value="sequential"> 按顺序抽取</label>
+            </section>
+
+            <section class="setting-group">
+                <h3>练习模式</h3>
+                <label><input type="radio" name="practiceMode" value="1" checked> 模式1 · 隐去公式</label>
+                <label><input type="radio" name="practiceMode" value="2"> 模式2 · 显示公式</label>
+            </section>
+
+            <section class="setting-group">
+                <h3>分组练习</h3>
+                <div id="group-filter" class="group-filter"></div>
+            </section>
+
+            <section class="setting-group">
+                <h3>显示选项</h3>
+                <label>
+                    <input type="checkbox" id="show-group-tag" checked>
+                    显示公式所属分组
+                </label>
+            </section>
+
+            <button id="btn-start" class="btn btn-primary btn-block">开始 / 重新开始</button>
+        </aside>
+
+        <!-- ===== 右侧舞台 ===== -->
+        <section class="practice-stage">
+
+            <div id="practice-empty" class="practice-empty">
+                <p>正在加载公式集…</p>
+            </div>
+
+            <div id="practice-content" class="practice-content" hidden>
+                <div class="practice-header">
+                    <span id="practice-progress" class="practice-progress"></span>
+                    <span id="practice-group-tag" class="practice-group-tag" hidden></span>
+                </div>
+
+                <div class="practice-body">
+                    <div class="panel panel-3d">
+                        <div class="panel-label">3D 模型</div>
+                        <div class="canvas-host" id="practice-canvas"></div>
+                    </div>
+                    <div class="panel panel-unfold">
+                        <div class="panel-label">展开图</div>
+                        <div class="svg-host" id="practice-svg"></div>
+                    </div>
+                    <div class="panel panel-formula">
+                        <div class="panel-label">公式</div>
+                        <div id="practice-formula" class="practice-formula"></div>
+                    </div>
+                </div>
+
+                <div class="practice-actions">
+                    <button id="btn-reveal" class="btn btn-outline">显示公式</button>
+                    <button id="btn-next" class="btn btn-primary">下一题 →</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>模式1：看模型想公式 · 模式2：看公式练手法 · 拖拽可旋转 3D 模型</p>
+    </footer>
+
+    <script type="module" src="js/practice.js"></script>
+</body>
+</html>
