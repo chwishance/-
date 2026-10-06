@@ -1,6 +1,8 @@
 // ===== js/pyraminx.js =====
 import { PyraminxModule } from './pyraminx-module.js';
 import { loadModules, saveModules } from './storage.js';
+import { PyraminxModule } from './pyraminx-module.js';
+import { loadModules, saveModules, loadUIPrefs, updateUIPref } from './storage.js';
 
 const appEl = document.getElementById('app');
 const btnAddTop = document.getElementById('btn-add-top');
