@@ -39,3 +39,32 @@ export function getAllGroups(modules) {
 export function getPracticeModules(modules) {
     return modules.filter((m) => m.formula && m.formula.trim());
 }
+
+/* ===== UI 偏好（跨页面共享） ===== */
+
+const UI_PREFS_KEY = 'pyraminx_ui_prefs_v1';
+
+export function loadUIPrefs() {
+    try {
+        const raw = localStorage.getItem(UI_PREFS_KEY);
+        return raw ? JSON.parse(raw) : {};
+    } catch (err) {
+        console.error('[偏好] 读取失败:', err);
+        return {};
+    }
+}
+
+export function saveUIPrefs(prefs) {
+    try {
+        localStorage.setItem(UI_PREFS_KEY, JSON.stringify(prefs));
+    } catch (err) {
+        console.error('[偏好] 保存失败:', err);
+    }
+}
+
+/** 便捷：更新单个偏好字段 */
+export function updateUIPref(key, value) {
+    const prefs = loadUIPrefs();
+    prefs[key] = value;
+    saveUIPrefs(prefs);
+}
