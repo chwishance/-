@@ -9,9 +9,21 @@ const btnAddTop = document.getElementById('btn-add-top');
 const btnAddBottom = document.getElementById('btn-add-bottom');
 const btnExport = document.getElementById('btn-export');
 const fileImport = document.getElementById('file-import');
+const btnToggleUnfold = document.getElementById('btn-toggle-unfold');
 
 let modules = [];
 
+let hideUnfold = false;
+
+function applyUnfoldVisibility() {
+    appEl.classList.toggle('hide-unfold', hideUnfold);
+    btnToggleUnfold.textContent = hideUnfold ? '显示展开图' : '隐藏展开图';
+
+    // 展开图隐藏/显示后，3D 区域宽度变化，延迟触发一次 resize
+    requestAnimationFrame(() => {
+        setTimeout(() => modules.forEach((m) => m.resize()), 40);
+    });
+}
 function persist() {
     saveModules(modules.map((m) => m.serialize()));
 }
@@ -98,8 +110,19 @@ window.addEventListener('resize', () => {
     resizeTimer = setTimeout(() => modules.forEach((m) => m.resize()), 120);
 });
 
+btnToggleUnfold.addEventListener('click', () => {
+    hideUnfold = !hideUnfold;
+    applyUnfoldVisibility();
+    updateUIPref('hideUnfoldPyraminx', hideUnfold);
+});
+
 /* ---------- 启动 ---------- */
 function init() {
+    // 恢复偏好
+    const prefs = loadUIPrefs();
+    hideUnfold = !!prefs.hideUnfoldPyraminx;
+    applyUnfoldVisibility();
+
     const states = loadModules();
     if (states.length === 0) {
         createModule(null);
