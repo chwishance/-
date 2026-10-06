@@ -1,5 +1,6 @@
 // ===== js/practice.js =====
 import * as THREE from 'three';
+import { loadModules, getAllGroups, getPracticeModules, loadUIPrefs, updateUIPref } from './storage.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { loadModules, getAllGroups, getPracticeModules } from './storage.js';
 import { buildPyraminxGroup, buildUnfoldSVG } from './pyraminx-module.js';
@@ -19,6 +20,7 @@ const state = {
         drawMode: 'random',      // 'random' | 'sequential'
         practiceMode: '1',       // '1' | '2'
         showGroupTag: true,
+        showUnfold: true,
     },
 };
 
@@ -43,7 +45,8 @@ function init() {
     els.canvasHost    = document.getElementById('practice-canvas');
     els.svgHost       = document.getElementById('practice-svg');
     els.showGroupCb   = document.getElementById('show-group-tag');
-
+els.showUnfoldCb = document.getElementById('show-unfold');
+els.container = document.querySelector('.practice-container');
     // 设置：抽取方式
     document.querySelectorAll('input[name="drawMode"]').forEach((el) => {
         el.addEventListener('change', () => {
@@ -71,6 +74,18 @@ function init() {
         state.settings.showGroupTag = els.showGroupCb.checked;
         updateGroupTag();
     });
+
+    // 显示 / 隐藏展开图
+const prefs = loadUIPrefs();
+state.settings.showUnfold = prefs.showUnfoldPyraminx !== false; // 默认 true
+els.showUnfoldCb.checked = state.settings.showUnfold;
+applyUnfoldVisibility();
+
+els.showUnfoldCb.addEventListener('change', () => {
+    state.settings.showUnfold = els.showUnfoldCb.checked;
+    applyUnfoldVisibility();
+    updateUIPref('showUnfoldPyraminx', state.settings.showUnfold);
+});
 
     // 按钮
     els.revealBtn.addEventListener('click', () => {
@@ -334,7 +349,23 @@ function initViewer() {
         viewer.ro.observe(host);
     }
 }
+function applyUnfoldVisibility() {
+    els.container.classList.toggle('hide-unfold', !state.settings.showUnfold);
 
+    // 展开图区域宽度变化后，需要重新计算 3D 视口
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            const v = state.viewer;
+            if (!v || !els.canvasHost) return;
+            const w = els.canvasHost.clientWidth;
+            const h = els.canvasHost.clientHeight;
+            if (!w || !h) return;
+            v.camera.aspect = w / h;
+            v.camera.updateProjectionMatrix();
+            v.renderer.setSize(w, h);
+        }, 40);
+    });
+}
 /* ============================================================
  *  工具
  * ============================================================ */
