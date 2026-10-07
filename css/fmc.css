@@ -1,0 +1,258 @@
+/* ===== css/fmc.css ===== */
+/* FMC 公式集专用（基础样式复用 3x3.css） */
+
+/* ============================================================
+ *  子分类筛选栏
+ * ============================================================ */
+.sub-filter-bar {
+    background: linear-gradient(180deg, transparent, rgba(120, 146, 98, 0.04));
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.filter-sub-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.filter-sub-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+}
+
+.filter-sub-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-text-light);
+    margin-right: 4px;
+}
+
+.sub-chip {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.sub-chip:hover {
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+.sub-chip.active {
+    background: var(--color-secondary);
+    color: #FFF8F0;
+    border-color: var(--color-secondary);
+    box-shadow: 0 2px 6px rgba(120, 146, 98, 0.25);
+}
+
+/* ============================================================
+ *  模态里的 FMC 行
+ * ============================================================ */
+.fmc-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: var(--color-surface-2);
+    border-bottom: 1.5px solid var(--color-border);
+    flex-wrap: wrap;
+}
+
+.fmc-row-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-secondary);
+    padding-left: 8px;
+    border-left: 3px solid var(--color-secondary);
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.fmc-row select {
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1.5px solid var(--color-border);
+    background: #FFFFFF;
+    color: var(--color-text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+    letter-spacing: 0.5px;
+}
+
+.fmc-row select:hover {
+    border-color: var(--color-secondary);
+}
+
+.fmc-row select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(196, 60, 52, 0.08);
+}
+
+.fmc-sub-inline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
+}
+
+.fmc-sub-inline label {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--color-text-light);
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 700px) {
+    .fmc-row {
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    .fmc-row-label {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+    }
+    .fmc-row select {
+        font-size: 12.5px;
+        padding: 5px 8px;
+    }
+}
+
+/* ============================================================
+ *  子分类控制条（全选 / 清空）
+ * ============================================================ */
+.filter-sub-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.sub-chip-action {
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 4px 14px;
+    border-radius: 14px;
+    background: var(--color-surface);
+    border: 1.5px dashed var(--color-border);
+    color: var(--color-text);
+}
+
+.sub-chip-action:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: rgba(196, 60, 52, 0.06);
+}
+
+.filter-sub-sep {
+    width: 1px;
+    height: 20px;
+    background: var(--color-border);
+    margin: 0 4px;
+    flex-shrink: 0;
+}
+
+.filter-sub-tip {
+    font-size: 12.5px;
+    color: var(--color-text-light);
+    font-style: italic;
+    letter-spacing: 0.3px;
+    padding: 4px 8px;
+    line-height: 1.6;
+}
+
+/* 3D 面板底部工具行 */
+.panel-3d-tools {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-shrink: 0;
+}
+
+.panel-3d-tools .btn {
+    flex: 1;
+    font-size: 13.5px;
+    letter-spacing: 1.5px;
+    padding: 8px 10px;
+    white-space: nowrap;
+}
+
+.panel-3d-tools .full-paint-btn:hover {
+    background: rgba(196, 60, 52, 0.06);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.panel-3d-tools .reset-paint-btn:hover {
+    background: rgba(120, 146, 98, 0.08);
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+}
+
+@media (max-width: 700px) {
+    .panel-3d-tools .btn {
+        font-size: 12.5px;
+        padding: 7px 8px;
+        letter-spacing: 1px;
+    }
+}
+
+/* ============================================================
+ *  TECH 主分组的文本输入框
+ * ============================================================ */
+.fmc-sub-tech {
+    font-family: inherit;
+    font-size: 13.5px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1.5px solid var(--color-border);
+    background: #FFFFFF;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.15s ease;
+    letter-spacing: 0.5px;
+    min-width: 220px;
+    flex: 1;
+}
+
+.fmc-sub-tech::placeholder {
+    color: rgba(122, 113, 104, 0.55);
+    font-size: 12.5px;
+}
+
+.fmc-sub-tech:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(196, 60, 52, 0.08);
+}
+
+@media (max-width: 700px) {
+    .fmc-sub-tech {
+        min-width: 0;
+        width: 100%;
+    }
+}

@@ -1,6 +1,6 @@
-// ===== js/pyraminx.js =====
-import { PyraminxModule } from './pyraminx-module.js';
-import { loadModules, saveModules } from './storage.js';
+// ===== js/3x3.js =====
+import { Cube3x3Module } from './3x3-module.js';
+import { load3x3Modules, save3x3Modules } from './storage.js';
 
 const appEl = document.getElementById('app');
 const filterChipsEl = document.getElementById('filter-chips');
@@ -9,28 +9,21 @@ const btnAddBottom = document.getElementById('btn-add-bottom');
 const btnExport = document.getElementById('btn-export');
 const fileImport = document.getElementById('file-import');
 
-/* 筛选状态：
- *   '__ALL__'        = 全部
- *   '__UNGROUPED__'  = 未分组
- *   其他字符串       = 具体分组名
- */
 let activeGroup = '__ALL__';
 let modules = [];
 
-/* ---------- 持久化 ---------- */
 function persist() {
-    saveModules(modules.map((m) => m.serialize()));
+    save3x3Modules(modules.map((m) => m.serialize()));
     renderFilterBar();
     applyFilter();
 }
 
-/* ---------- 创建 / 删除 ---------- */
 function createModule(state) {
-    const mod = new PyraminxModule(state, persist, handleDelete);
+    const mod = new Cube3x3Module(state, persist, handleDelete);
     modules.push(mod);
     appEl.appendChild(mod.element);
     mod.mount();
-    applyFilter();   // 新模块立即遵守当前筛选
+    applyFilter();
     return mod;
 }
 
@@ -46,7 +39,6 @@ function handleDelete(id) {
 function renderFilterBar() {
     if (!filterChipsEl) return;
 
-    // 收集所有分组（去重 + 排序）
     const set = new Set();
     modules.forEach((m) => {
         const g = (m.group || '').trim();
@@ -55,17 +47,12 @@ function renderFilterBar() {
     const groups = Array.from(set).sort((a, b) => a.localeCompare(b, 'zh'));
     const hasUngrouped = modules.some((m) => !(m.group || '').trim());
 
-    // 生成 chip 列表
     const chips = [{ key: '__ALL__', label: '全部' }];
     groups.forEach((g) => chips.push({ key: g, label: g }));
     if (hasUngrouped) chips.push({ key: '__UNGROUPED__', label: '未分组' });
 
-    // 如果当前激活的组已不存在（例如用户删掉了所有属于该组的模块），回退到"全部"
-    if (!chips.some((c) => c.key === activeGroup)) {
-        activeGroup = '__ALL__';
-    }
+    if (!chips.some((c) => c.key === activeGroup)) activeGroup = '__ALL__';
 
-    // 重建 chips
     filterChipsEl.innerHTML = '';
     chips.forEach((c) => {
         const btn = document.createElement('button');
@@ -86,15 +73,9 @@ function applyFilter() {
     modules.forEach((m) => {
         const g = (m.group || '').trim();
         let show = true;
-
-        if (activeGroup === '__ALL__') {
-            show = true;
-        } else if (activeGroup === '__UNGROUPED__') {
-            show = !g;
-        } else {
-            show = g === activeGroup;
-        }
-
+        if (activeGroup === '__ALL__') show = true;
+        else if (activeGroup === '__UNGROUPED__') show = !g;
+        else show = g === activeGroup;
         m.element.style.display = show ? '' : 'none';
     });
 }
@@ -103,17 +84,15 @@ function applyFilter() {
 function exportData() {
     const data = modules.map((m) => m.serialize());
     if (data.length === 0) {
-        alert('当前没有可导出的金字塔模块。');
+        alert('当前没有可导出的三阶模块。');
         return;
     }
-    const blob = new Blob([JSON.stringify(data, null, 2)], {
-        type: 'application/json',
-    });
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
     a.href = url;
-    a.download = `pyraminx-formulas-${stamp}.json`;
+    a.download = `cube3-formulas-${stamp}.json`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -130,7 +109,7 @@ async function importData(file) {
         modules.forEach((m) => m.destroy());
         modules = [];
         appEl.innerHTML = '';
-        activeGroup = '__ALL__';   // 导入后重置筛选
+        activeGroup = '__ALL__';
 
         data.forEach((state) => createModule(state));
         persist();
@@ -146,10 +125,7 @@ async function importData(file) {
 }
 
 /* ---------- 事件 ---------- */
-btnAddTop.addEventListener('click', () => {
-    createModule(null);
-    persist();
-});
+btnAddTop.addEventListener('click', () => { createModule(null); persist(); });
 
 btnAddBottom.addEventListener('click', () => {
     createModule(null);
@@ -165,16 +141,14 @@ fileImport.addEventListener('change', (e) => {
     e.target.value = '';
 });
 
-/* ---------- 全局 resize ---------- */
 let resizeTimer = null;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => modules.forEach((m) => m.resize()), 120);
 });
 
-/* ---------- 启动 ---------- */
 function init() {
-    const states = loadModules();
+    const states = load3x3Modules();
     if (states.length === 0) {
         createModule(null);
         persist();

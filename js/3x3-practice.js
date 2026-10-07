@@ -1,9 +1,8 @@
-// ===== js/practice.js =====
+// ===== js/3x3-practice.js =====
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { loadModules, getAllGroups, getPracticeModules } from './storage.js';
-import { buildPyraminxGroup } from './pyraminx-module.js';
-
+import { load3x3Modules, getAll3x3Groups, get3x3PracticeModules } from './storage.js';
+import { buildCube3x3Group } from './3x3-module.js';
 /* ============================================================
  *  状态
  * ============================================================ */
@@ -98,7 +97,7 @@ function init() {
     });
 
     // 加载
-    state.allModules = loadModules();
+    state.allModules = load3x3Modules();
     renderGroupFilter();
     refreshPool();
 
@@ -112,10 +111,10 @@ function init() {
  *  公式池刷新
  * ============================================================ */
 function refreshPool() {
-    state.allModules = loadModules();
+    state.allModules = load3x3Modules();
     renderGroupFilter();
 
-    const withFormula = getPracticeModules(state.allModules);
+    const withFormula = get3x3PracticeModules(state.allModules);
     let pool = withFormula;
 
     if (state.disabledGroups.size > 0) {
@@ -141,7 +140,7 @@ function refreshPool() {
 
 function renderGroupFilter() {
     els.groupFilter.innerHTML = '';
-    const groups = getAllGroups(state.allModules);
+    const groups = getAll3x3Groups(state.allModules);
 
     if (groups.length === 0) {
         const p = document.createElement('p');
@@ -276,7 +275,7 @@ function updateViewerModel(stickerColors) {
         disposeObject(v.modelGroup);
         v.modelGroup = null;
     }
-    const group = buildPyraminxGroup(stickerColors);
+    const group = buildCube3x3Group(stickerColors);
     v.scene.add(group);
     v.modelGroup = group;
 }
@@ -295,8 +294,8 @@ function initViewer() {
     scene.background = new THREE.Color('#FCFAF5');
 
     const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-    camera.position.set(2.15, 1.85, 2.85);
-    camera.lookAt(0, 0.05, 0);
+    camera.position.set(4.6, 4.2, 4.8);
+    camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(w, h);
@@ -308,10 +307,11 @@ function initViewer() {
     controls.enableDamping = true;
     controls.dampingFactor = 0.09;
     controls.enablePan = false;
-    controls.minDistance = 2.6;
-    controls.maxDistance = 8;
+    controls.minDistance = 4.5;
+    controls.maxDistance = 14;
+    controls.target.set(0, 0, 0);
     controls.rotateSpeed = 0.85;
-    controls.target.set(0, 0.05, 0);
+
     controls.update();
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.82));

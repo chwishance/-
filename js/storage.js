@@ -40,31 +40,65 @@ export function getPracticeModules(modules) {
     return modules.filter((m) => m.formula && m.formula.trim());
 }
 
-/* ===== UI 偏好（跨页面共享） ===== */
+/* ============================================================
+ *  三阶魔方专用存储（与金字塔完全隔离）
+ * ============================================================ */
+const STORAGE_KEY_3X3 = 'cube3_formula_app_v1';
 
-const UI_PREFS_KEY = 'pyraminx_ui_prefs_v1';
-
-export function loadUIPrefs() {
+export function load3x3Modules() {
     try {
-        const raw = localStorage.getItem(UI_PREFS_KEY);
-        return raw ? JSON.parse(raw) : {};
+        const raw = localStorage.getItem(STORAGE_KEY_3X3);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
     } catch (err) {
-        console.error('[偏好] 读取失败:', err);
-        return {};
+        console.error('[存储-3x3] 读取失败:', err);
+        return [];
     }
 }
 
-export function saveUIPrefs(prefs) {
+export function save3x3Modules(modules) {
     try {
-        localStorage.setItem(UI_PREFS_KEY, JSON.stringify(prefs));
+        localStorage.setItem(STORAGE_KEY_3X3, JSON.stringify(modules));
     } catch (err) {
-        console.error('[偏好] 保存失败:', err);
+        console.error('[存储-3x3] 保存失败:', err);
     }
 }
 
-/** 便捷：更新单个偏好字段 */
-export function updateUIPref(key, value) {
-    const prefs = loadUIPrefs();
-    prefs[key] = value;
-    saveUIPrefs(prefs);
+export function getAll3x3Groups(modules) {
+    const set = new Set();
+    modules.forEach((m) => {
+        const g = (m.group || '').trim();
+        if (g) set.add(g);
+    });
+    return Array.from(set).sort((a, b) => a.localeCompare(b, 'zh'));
+}
+
+export function get3x3PracticeModules(modules) {
+    return modules.filter((m) => m.formula && m.formula.trim());
+}
+
+/* ============================================================
+ *  三阶 FMC 专用存储（独立于普通三阶）
+ * ============================================================ */
+const STORAGE_KEY_FMC = 'cube3_fmc_formula_app_v1';
+
+export function loadFMCModules() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY_FMC);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+        console.error('[存储-FMC] 读取失败:', err);
+        return [];
+    }
+}
+
+export function saveFMCModules(modules) {
+    try {
+        localStorage.setItem(STORAGE_KEY_FMC, JSON.stringify(modules));
+    } catch (err) {
+        console.error('[存储-FMC] 保存失败:', err);
+    }
 }

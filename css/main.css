@@ -196,7 +196,7 @@ body {
     position: fixed;
     z-index: 9999;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 7px;
     padding: 11px;
     background: #FFFFFF;
@@ -276,47 +276,4 @@ body {
     color: var(--color-primary);
     background: rgba(196, 60, 52, 0.08);
     transform: translateX(-2px);
-}
-/* ============================================================
-   隐藏展开图 —— 通用
-   ============================================================ */
-
-/* ---- 编辑页：金字塔模块 ---- */
-.app-container.hide-unfold .module-body {
-    grid-template-columns: 1fr 1fr;
-}
-.app-container.hide-unfold .panel-unfold {
-    display: none;
-}
-
-@media (max-width: 1180px) {
-    .app-container.hide-unfold .module-body .panel-formula {
-        grid-column: auto;
-    }
-}
-
-@media (max-width: 780px) {
-    .app-container.hide-unfold .module-body {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ---- 训练页 ---- */
-.practice-container.hide-unfold .practice-body {
-    grid-template-columns: 1fr 1fr;
-}
-.practice-container.hide-unfold .practice-body .panel-unfold {
-    display: none;
-}
-
-@media (max-width: 1180px) {
-    .practice-container.hide-unfold .practice-body .panel-formula {
-        grid-column: auto;
-    }
-}
-
-@media (max-width: 700px) {
-    .practice-container.hide-unfold .practice-body {
-        grid-template-columns: 1fr;
-    }
 }
