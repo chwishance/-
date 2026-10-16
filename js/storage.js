@@ -102,3 +102,47 @@ export function saveFMCModules(modules) {
         console.error('[存储-FMC] 保存失败:', err);
     }
 }
+
+/* ============================================================
+ *  三阶盲拧专用存储（独立于普通三阶 / FMC）
+ * ============================================================ */
+const STORAGE_KEY_BLIND = 'cube3_blind_formula_app_v1';
+const BLIND_UI_PREFS_KEY = 'cube3_blind_ui_prefs_v1';
+
+export function loadBlindModules() {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY_BLIND);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+    } catch (err) {
+        console.error('[存储-盲拧] 读取失败:', err);
+        return [];
+    }
+}
+
+export function saveBlindModules(modules) {
+    try {
+        localStorage.setItem(STORAGE_KEY_BLIND, JSON.stringify(modules));
+    } catch (err) {
+        console.error('[存储-盲拧] 保存失败:', err);
+    }
+}
+
+export function loadBlindUIPrefs() {
+    try {
+        const raw = localStorage.getItem(BLIND_UI_PREFS_KEY);
+        return raw ? JSON.parse(raw) : {};
+    } catch (err) {
+        console.error('[盲拧偏好] 读取失败:', err);
+        return {};
+    }
+}
+
+export function saveBlindUIPrefs(prefs) {
+    try {
+        localStorage.setItem(BLIND_UI_PREFS_KEY, JSON.stringify(prefs));
+    } catch (err) {
+        console.error('[盲拧偏好] 保存失败:', err);
+    }
+}
